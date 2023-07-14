@@ -60,13 +60,12 @@ def main():
         # Generate Story
         if st.button("Write this story now"):
             prompt = f"In the language of {language}, using the setting of '{story_settings[actual_story]}', and with the title '{title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
-            story = get_story(prompt)
-            st.session_state.story = story
+            st.session_state.story = get_story(prompt)
 
     # Show Story
     if 'story' in st.session_state:
         st.markdown("# " + title)
-        st.markdown("## " + story)
+        st.markdown("## " + st.session_state.story)
 
 # Main function
 if __name__ == "__main__":
