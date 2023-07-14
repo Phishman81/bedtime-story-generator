@@ -11,14 +11,8 @@ story_settings = {
 
 Doch das Leben in dieser idyllischen Welt ist nicht immer unbeschwert. Gefahren lauern in Gestalt der schlauen Katze Felina und des scharfäugigen Milans Raptor, die die Mäusefamilie stets auf Trab halten. Menschen tauchen ab und zu in ihren Abenteuern auf, große Gestalten, die seltsame Dinge tun, und deren Anwesenheit stets für eine gewisse Aufregung sorgt. Sie sind friedlich und die Mäuse schauen ihnen gerne heimlich bei ihrem Tun zu.
 
-Die Geschichten aus dem Leben der Mäusefamilie Körnchen sind geprägt von liebevoll gezeichneten Details, die an Beatrix Potters charakteristischen Stil erinnern. Sie sind voll von bildhaften Beschreibungen der wunderschönen Natur und lebhaften Dialogen zwischen den Tieren, die oft humorvoll sind und die Persönlichkeiten der Figuren widerspiegeln. Aktiv erzählt, fühlen sich die jungen Zuhörer direkt in die Geschichte hineinversetzt. So sind die Abenteuer der Mäusefamilie Körnchen ein friedvoller Abschluss eines jeden Tages, voller kleiner Weisheiten und lehrreicher Momente, die die Kinder sanft in den Schlaf begleiten.",
-    "Ferdinand, the red racing Car": "In a bustling city, a shiny red racing car named Ferdinand resides. Ferdinand is known for his speed and agility, bringing joy to everyone who sees him race."
-}
-
-story_options = {
-    "deutsch": ["Eine Mäusegeschichte", "Ferdinand, das rote Auto"],
-    "english": ["The Adventures of Family Mouse", "Ferdinand, the red racing Car"],
-    "espanol": ["Las Aventuras de la Familia Ratón", "Ferdinand, el coche rojo"]
+Die Geschichten aus dem Leben der Mäusefamilie Körnchen sind geprägt von liebevoll gezeichneten Details, die an Beatrix Potters charakteristischen Stil erinnern. Sie sind voll von bildhaften Beschreibungen der wunderschönen Natur und lebhaften Dialogen zwischen den Tieren, die oft humorvoll sind und die Persönlichkeiten der Figuren widerspiegeln. Aktiv erzählt, fühlen sich die jungen Zuhörer direkt in die Geschichte hineinversetzt. So sind die Abenteuer der Mäusefamilie Körnchen ein friedvoller Abschluss eines jeden Tages, voller kleiner Weisheiten und lehrreicher Momente, die die Kinder sanft in den Schlaf begleiten.": "Eine Mäusegeschichte",
+    "Ferdinand, the red racing Car": "Ferdinand, das rote Auto"
 }
 
 def get_story_titles(prompt):
@@ -48,27 +42,26 @@ def main():
     st.subheader("Choose your story")
 
     # Dropdown for Story Selection
-    display_story = st.selectbox("Select a Story", story_options[language])
-    actual_story = list(story_settings.keys())[story_options[language].index(display_story)]
+    story = st.selectbox("Select a Story", list(story_settings.values()) if language == 'deutsch' else list(story_settings.keys()))
 
     # Get Story Titles
     if st.button("Get Story Titles"):
-        prompt = f"In the language of {language}, using the setting of '{story_settings[actual_story]}', generate 10 engaging and fun titles for a bedtime story."
+        prompt = f"In the language of {language}, using the setting of '{story_settings[story]}', generate 10 engaging and fun titles for a bedtime story."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
     # Show Titles
     if 'titles' in st.session_state:
-        title = st.selectbox("Select a Title", st.session_state.titles)
+        st.session_state.title = st.selectbox("Select a Title", st.session_state.titles)
 
         # Generate Story
         if st.button("Write this story now"):
-            prompt = f"In the language of {language}, using the setting of '{story_settings[actual_story]}', and with the title '{title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
+            prompt = f"In the language of {language}, using the setting of '{story_settings[story]}', and with the title '{st.session_state.title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
             st.session_state.story = get_story(prompt)
 
     # Show Story
-    if 'story' in st.session_state:
-        st.markdown("# " + title)
+    if 'story' in st.session_state and 'title' in st.session_state:
+        st.markdown("# " + st.session_state.title)
         st.markdown("## " + st.session_state.story)
 
 # Main function
