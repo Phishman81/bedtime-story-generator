@@ -41,7 +41,7 @@ def main():
 
     # Get Story Titles
     if st.button("Get Story Titles"):
-        prompt = f"[{language}] " + story_settings[story] + "\nNow generate 10 titles for a bedtime story."
+        prompt = f"In the language of {language}, using the setting of '{story_settings[story]}', generate 10 engaging and fun titles for a bedtime story."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
@@ -51,7 +51,7 @@ def main():
 
         # Generate Story
         if st.button("Write this story now"):
-            prompt = f"[{language}] " + story_settings[story] + " The title of the story is '" + title + "'. Now write the story."
+            prompt = f"In the language of {language}, using the setting of '{story_settings[story]}', and with the title '{title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
             story = get_story(prompt)
             st.session_state.story = story
 
