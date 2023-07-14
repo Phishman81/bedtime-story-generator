@@ -50,7 +50,7 @@ story_mapping = {
 def get_story_titles(prompt):
     # Generate story titles with GPT-4
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
-    titles = response.choices[0].text.strip().split('\\n')
+    titles = response.choices[0].text.strip().split('. ')
     return titles
 
 def get_story(prompt):
@@ -89,13 +89,4 @@ def main():
         # Generate Story
         if st.button("Write this story now"):
             prompt = f"In the language of {language}, using the setting of '{story_settings[story_mapping[story]]}', and with the title '{st.session_state.title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
-            st.session_state.story = get_story(prompt)
-
-    # Show Story
-    if 'story' in st.session_state and 'title' in st.session_state:
-        st.markdown("# " + st.session_state.title)
-        st.markdown("## " + st.session_state.story)
-
-# Main function
-if __name__ == "__main__":
-    main()
+            st.session_state
