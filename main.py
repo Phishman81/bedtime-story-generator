@@ -36,10 +36,12 @@ def main():
 
     # Dropdown for Story Selection
     story = st.selectbox("Select a Story", list(story_settings.keys()))
+    # Dropdown for Language Selection
+    language = st.selectbox("Language of the story", ["deutsch", "english", "espanol"], index=0)
 
     # Get Story Titles
     if st.button("Get Story Titles"):
-        prompt = story_settings[story] + "\nNow generate 10 titles for a bedtime story."
+        prompt = f"[{language}] " + story_settings[story] + "\nNow generate 10 titles for a bedtime story."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
@@ -49,7 +51,7 @@ def main():
 
         # Generate Story
         if st.button("Write this story now"):
-            prompt = story_settings[story] + " The title of the story is '" + title + "'. Now write the story."
+            prompt = f"[{language}] " + story_settings[story] + " The title of the story is '" + title + "'. Now write the story."
             story = get_story(prompt)
             st.session_state.story = story
 
