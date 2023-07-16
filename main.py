@@ -74,11 +74,12 @@ def main():
     st.subheader("Choose your story")
 
     # Dropdown for Story Selection
-    story = st.selectbox("Select a Story", story_options[language])
+    chosen_story = st.selectbox("Select a Story", story_options[language])
+    story_key = story_mapping[chosen_story]  # Map the chosen story to its key
 
     # Get Story Titles
     if st.button("Get Story Titles"):
-        prompt = f"In the language of {language}, using the setting of '{story_settings[story_mapping[story]]}', generate 10 engaging and fun titles for a bedtime story."
+        prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', generate 10 engaging and fun titles for a bedtime story."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
@@ -88,7 +89,7 @@ def main():
 
         # Generate Story
         if st.button("Write this story now"):
-            prompt = f"In the language of {language}, using the setting of '{story_settings[story_mapping[story]]}', and with the title '{st.session_state.title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
+            prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', and with the title '{st.session_state.title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
             st.session_state.story = get_story(prompt)
 
     # Show Story
