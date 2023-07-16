@@ -50,7 +50,7 @@ story_mapping = {
 def get_story_titles(prompt):
     # Generate story titles with GPT-4
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
-    titles = response.choices[0].text.strip().split('\\n')
+    titles = response.choices[0].text.strip().split('\n')
     return titles
 
 def get_story(prompt):
