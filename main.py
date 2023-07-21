@@ -7,8 +7,8 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": '...',
-    "Ferdinand, das rote Auto": "..."
+    "Die Abenteuer der Familie Maus": 'Tief inmitten der grünen Wiesen, versteckt ...',
+    "Ferdinand, das rote Auto": "In einer belebten Stadt lebt ein glänzendes rotes Rennauto namens Ferdinand. Ferdinand ist bekannt für seine Geschwindigkeit und Agilität und bringt jedem, der ihn Rennen sieht, Freude."
 }
 
 # Function to generate story titles with GPT-4
