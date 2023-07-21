@@ -14,7 +14,7 @@ story_settings = {
 # Function to generate story titles with GPT-4
 def get_story_titles(prompt):
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
-    titles = response.choices[0].text.strip().split('\\n')
+    titles = response.choices[0].text.strip().split('\n')  # Updated here
     return titles
 
 # Function to generate story with GPT-4
