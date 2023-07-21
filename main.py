@@ -7,7 +7,7 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "The Adventures of Family Mouse": '''Tief inmitten der grünen Wiesen, versteckt unter dem schützenden Schatten eines uralten Baumstumpfes, 
+    "Die Abenteuer der Familie Maus": '''Tief inmitten der grünen Wiesen, versteckt unter dem schützenden Schatten eines uralten Baumstumpfes, 
     liegt das gemütliche Heim der liebenswerten Mäusefamilie Körnchen. Mama und Papa Körnchen teilen ihr Zuhause 
     mit ihren drei entzückenden Kindern: der neugierigen Emma, dem abenteuerlustigen Max und dem jüngsten, 
     dem sanften kleinen Tim. Tim hat eine besondere Freundin namens Greta, eine Grille mit bemerkenswerten 
@@ -32,7 +32,7 @@ story_settings = {
 }
 
 story_options = {
-    "deutsch": ["Eine Mäusegeschichte", "Ferdinand, das rote Auto"],
+    "deutsch": ["Die Abenteuer der Familie Maus", "Ferdinand, das rote Auto"],
     "english": ["The Adventures of Family Mouse", "Ferdinand, the red racing Car"],
     "espanol": ["Las Aventuras de la Familia Ratón", "Ferdinand, el coche rojo"]
 }
@@ -55,7 +55,7 @@ def get_story_titles(prompt):
 
 def get_story(prompt):
     # Generate story with GPT-4
-    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=2500)
+    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=3500)
     return response.choices[0].text.strip()
 
 def main():
@@ -79,7 +79,7 @@ def main():
 
     # Get Story Titles
     if st.button("Get Story Titles"):
-        prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', generate 10 engaging and fun titles for a bedtime story."
+        prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', generate 10 short, engaging and fun titles for a bedtime story."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
@@ -89,7 +89,7 @@ def main():
 
         # Generate Story
         if st.button("Write this story now"):
-            prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', and with the title '{st.session_state.title}', generate a captivating and age-appropriate bedtime story. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
+            prompt = f"In the language of {language}, using the setting of '{story_settings[story_key]}', and with the title '{st.session_state.title}', generate a 1000 word long, captivating and age-appropriate bedtime story in the style of Beatrix Potter. Make sure the story is engaging, fun, and has a clear beginning, middle, and end."
             st.session_state.story = get_story(prompt)
 
     # Show Story
