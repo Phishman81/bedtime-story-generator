@@ -39,7 +39,7 @@ def main():
 
     # Get Story Titles
     if st.button("Geschichtstitel erhalten"):
-        prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', generiere 10 kurze, ansprechende und lustige Titel für eine Gutenachtgeschichte."
+        prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', generiere 10 kurze, ansprechende und lustige Titel für eine Gutenachtgeschichte. Erstelle sie als Liste, einen Titel je Zeile."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
