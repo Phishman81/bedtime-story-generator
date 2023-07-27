@@ -84,4 +84,14 @@ def main():
 
         # Generate Story
         if st.button("Schreibe jetzt diese Geschichte"):
-            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange
+            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
+            st.session_state.story = get_story(prompt)
+
+    # Show Story
+    if 'story' in st.session_state and 'title' in st.session_state:
+        st.markdown("# " + st.session_state.title)
+        st.markdown("## " + st.session_state.story)
+
+# Main function
+if __name__ == "__main__":
+    main()
