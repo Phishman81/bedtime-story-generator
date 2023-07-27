@@ -63,7 +63,7 @@ def main():
 
             # Generate Image
             subject = "Maus" if chosen_story == "mouse" else "red racing car"
-            image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}' in the style of Beatrix Potter."
+            image_prompt = f"Captivating painting showing a playful {subject} dealing with '{st.session_state.title}' in the style of Beatrix Potter."
             st.session_state.image_url = get_image(image_prompt)
 
     # Show Image and Story
