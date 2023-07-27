@@ -25,7 +25,11 @@ def get_story(prompt):
 # Function to generate image with DALL-E
 def get_image(prompt):
     response = openai.Image.create(prompt=prompt, model="image-alpha-001", size="512x512")
-    return response.url
+    try:
+        return response['data'][0]['url']
+    except IndexError:
+        print("No image was generated.")
+        return None
 
 def main():
     # Title
@@ -63,7 +67,7 @@ def main():
             st.session_state.image_url = get_image(image_prompt)
 
     # Show Image and Story
-    if 'image_url' in st.session_state:
+    if 'image_url' in st.session_state and st.session_state.image_url is not None:
         st.image(st.session_state.image_url)
     
     if 'story' in st.session_state and 'title' in st.session_state:
