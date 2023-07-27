@@ -62,8 +62,8 @@ def main():
             st.session_state.story = get_story(prompt)
 
             # Generate Image
-            subject = "Maus" if chosen_story == "Die Abenteuer der Familie Maus" else "rotes Rennauto"
-            image_prompt = f"Eine fesselnde Illustration, die eine verspielte {subject} im Stil von Beatrix Potter darstellt. Die Illustration bezieht sich auf den Titel '{st.session_state.title}'."
+            subject = "Maus" if chosen_story == "mouse" else "red racing car"
+            image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}' in the style of Beatrix Potter."
             st.session_state.image_url = get_image(image_prompt)
 
     # Show Image and Story
