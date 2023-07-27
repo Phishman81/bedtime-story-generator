@@ -1,4 +1,4 @@
-# Required Imports
+zt# Required Imports
 import streamlit as st
 import openai
 
@@ -48,7 +48,7 @@ def main():
         st.session_state.title = st.selectbox("Wähle einen Titel", st.session_state.titles)
 
         # Generate Story
-        if st.button("Schreibe diese Geschichte jetzt"):
+        if st.button("Schreibe jetzt diese Geschichte"):
             prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
             st.session_state.story = get_story(prompt)
 
