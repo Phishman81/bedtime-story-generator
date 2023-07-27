@@ -7,7 +7,42 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": 'Tief inmitten der grünen Wiesen, versteckt ...',
+    "Die Abenteuer der Familie Maus": 
+    """
+    SETTING: WALDSEE
+    
+    Ein idyllisches Refugium, umgeben von hohen, grünen Bäumen und bunten Blumen, die das Ufer säumen. Ein geheimnisvoller Ort, wo menschliche Aktivitäten nur aus der Ferne beobachtet werden.
+    
+    CHARAKTERE:
+    
+    FAMILIE MAUS
+    
+    PAPA MAUS - Ein fürsorglicher und harter Arbeiter, stets bemüht, seine Familie zu schützen und zu versorgen.
+    
+    MAMA MAUS - Liebevolle und geduldige Mutter, sie hält die Familie zusammen und sorgt dafür, dass jeder sich sicher und geliebt fühlt.
+    
+    MAX - Der älteste der Mäusekinder, mutig und verantwortungsbewusst.
+    
+    MINA - Die mittlere Maus, sie ist neugierig und immer bereit zu lernen.
+    
+    MO - Das jüngste Kind, unschuldig und abenteuerlustig, beste Freunde mit Greta, der Grille.
+    
+    GRETA - Die fröhliche Grille, immer mit einem Lied auf den Lippen, sie bringt Freude und Musik in das Leben der Mäusefamilie.
+    
+    FREUNDE DER FAMILIE:
+    
+    FRITZ - Der schlaue Fuchs, voller Weisheit und Ratschläge für die Familie Maus.
+    
+    BELLA - Die gütige Biene, die hart arbeitet, um den besten Honig im ganzen Wald zu produzieren.
+    
+    FEINDE:
+    
+    HELGA - Die hungrige Habichtsdame, immer auf der Suche nach ihrer nächsten Mahlzeit.
+    
+    KONRAD - Der knurrige Kater, ein ewiger Schrecken für die Mäusefamilie.
+    
+    MENSCHEN - Unbekannte Wesen, die am Waldsee für Freizeitaktivitäten auftauchen. Sie sind faszinierend und beängstigend zugleich für die Familie Maus, die sie immer aus sicherer Entfernung beobachtet.
+    """,
     "Ferdinand, das rote Auto": "In einer belebten Stadt lebt ein glänzendes rotes Rennauto namens Ferdinand. Ferdinand ist bekannt für seine Geschwindigkeit und Agilität und bringt jedem, der ihn Rennen sieht, Freude."
 }
 
@@ -49,14 +84,4 @@ def main():
 
         # Generate Story
         if st.button("Schreibe jetzt diese Geschichte"):
-            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
-            st.session_state.story = get_story(prompt)
-
-    # Show Story
-    if 'story' in st.session_state and 'title' in st.session_state:
-        st.markdown("# " + st.session_state.title)
-        st.markdown("## " + st.session_state.story)
-
-# Main function
-if __name__ == "__main__":
-    main()
+            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange
