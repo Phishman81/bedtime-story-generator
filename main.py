@@ -15,7 +15,7 @@ story_settings = {
     FAMILIE MAUS: PAPA MAUS - Ein fürsorglicher und harter Arbeiter, stets bemüht, seine Familie zu schützen und zu versorgen. MAMA MAUS - Liebevolle und geduldige Mutter, sie hält die Familie zusammen und sorgt dafür, dass jeder sich sicher und geliebt fühlt. MAX - Der älteste der Mäusekinder, mutig und verantwortungsbewusst. MINA - Die mittlere Maus, sie ist neugierig und immer bereit zu lernen. MO - Das jüngste Kind, unschuldig und abenteuerlustig, beste Freunde mit Greta, der Grille.
     FREUNDE DER FAMILIE: GRETA - Die fröhliche Grille, immer mit einem Lied auf den Lippen, sie bringt Freude und Musik in das Leben der Mäusefamilie. FRITZ - Der schlaue Fuchs, voller Weisheit und Ratschläge für die Familie Maus. BELLA - Die gütige Biene, die hart arbeitet, um den besten Honig im ganzen Wald zu produzieren.
     FEINDE: HELGA - Die hungrige Habichtsdame, immer auf der Suche nach ihrer nächsten Mahlzeit. KONRAD - Der knurrige Kater, ein ewiger Schrecken für die Mäusefamilie.
-    MENSCHEN - Unbekannte Wesen, die am Waldsee für Freizeitaktivitäten auftauchen. Sie sind faszinierend und beängstigend zugleich für die Familie Maus, die sie immer aus sicherer Entfernung beobachtet.
+    MENSCHEN - Unbekannte Wesen, die am Waldsee für Freizeitaktivitäten auftauchen. Sie sind faszinierend und beängstigend.
     """,
     "Ferdinand, das rote Auto": "In einer belebten Stadt lebt ein glänzendes rotes Rennauto namens Ferdinand. Ferdinand ist bekannt für seine Geschwindigkeit und Agilität und bringt jedem, der ihn Rennen sieht, Freude."
 }
