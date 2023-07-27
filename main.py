@@ -22,6 +22,11 @@ def get_story(prompt):
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=3500)
     return response.choices[0].text.strip()
 
+# Function to generate image with DALL-E
+def get_image(prompt):
+    response = openai.Image.create(prompt=prompt, model="image-alpha-001", size="512x512")
+    return response.url
+
 def main():
     # Title
     st.title("Bedtime-Stories")
@@ -52,7 +57,15 @@ def main():
             prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
             st.session_state.story = get_story(prompt)
 
-    # Show Story
+            # Generate Image
+            subject = "Maus" if chosen_story == "Die Abenteuer der Familie Maus" else "rotes Rennauto"
+            image_prompt = f"Eine fesselnde Illustration, die eine verspielte {subject} im Stil von Beatrix Potter darstellt. Die Illustration bezieht sich auf den Titel '{st.session_state.title}'."
+            st.session_state.image_url = get_image(image_prompt)
+
+    # Show Image and Story
+    if 'image_url' in st.session_state:
+        st.image(st.session_state.image_url)
+    
     if 'story' in st.session_state and 'title' in st.session_state:
         st.markdown("# " + st.session_state.title)
         st.markdown("## " + st.session_state.story)
