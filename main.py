@@ -7,16 +7,7 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": 
-    """
-    SETTING: WALDSEE
-    Ein idyllisches Refugium, umgeben von hohen, grünen Bäumen und bunten Blumen, die das Ufer säumen. Ein geheimnisvoller Ort, wo menschliche Aktivitäten nur aus der Ferne beobachtet werden.    
-    CHARAKTERE:
-    FAMILIE MAUS: PAPA MAUS - Ein fürsorglicher und harter Arbeiter, stets bemüht, seine Familie zu schützen und zu versorgen. MAMA MAUS - Liebevolle und geduldige Mutter, sie hält die Familie zusammen und sorgt dafür, dass jeder sich sicher und geliebt fühlt. MAX - Der älteste der Mäusekinder, mutig und verantwortungsbewusst. MINA - Die mittlere Maus, sie ist neugierig und immer bereit zu lernen. MO - Das jüngste Kind, unschuldig und abenteuerlustig, beste Freunde mit Greta, der Grille.
-    FREUNDE DER FAMILIE: GRETA - Die fröhliche Grille, immer mit einem Lied auf den Lippen, sie bringt Freude und Musik in das Leben der Mäusefamilie. FRITZ - Der schlaue Fuchs, voller Weisheit und Ratschläge für die Familie Maus. BELLA - Die gütige Biene, die hart arbeitet, um den besten Honig im ganzen Wald zu produzieren.
-    FEINDE: HELGA - Die hungrige Habichtsdame, immer auf der Suche nach ihrer nächsten Mahlzeit. KONRAD - Der knurrige Kater, ein ewiger Schrecken für die Mäusefamilie.
-    MENSCHEN - Unbekannte Wesen, die am Waldsee für Freizeitaktivitäten auftauchen. Sie sind faszinierend und beängstigend.
-    """,
+    "Die Abenteuer der Familie Maus": 'SETTING:Waldsee,idyllisch,umgeben von hohen Bäumen und bunten Blumen.Menschenaktivitäten nur aus Ferne.CHARAKTERE:FAMILIE MAUS:Papa:Ein Arbeiter,Mama:liebevoll,Max:mutig,Mina:neugierig,Mo:abenteuerlustig,Greta:fröhliche Grille,FREUNDE:Fritz:schlauer Fuchs,Bella:gütige Biene.FEINDE:Helga:hungriger Habicht,Konrad:knurriger Kater.',
     "Ferdinand, das rote Auto": "In einer belebten Stadt lebt ein glänzendes rotes Rennauto namens Ferdinand. Ferdinand ist bekannt für seine Geschwindigkeit und Agilität und bringt jedem, der ihn Rennen sieht, Freude."
 }
 
