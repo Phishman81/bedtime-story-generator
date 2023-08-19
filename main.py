@@ -58,7 +58,7 @@ def main():
 
         # Generate Story
         if st.button("Schreibe jetzt diese Geschichte"):
-            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
+            prompt = f"Du bist ein Kinderbuch-Autor.Schreibe auf deutsch eine 1000 Wörter lange Gschichte voller Abenteuer und Dialogen für kleine Kinder. Hier sind Hintergrundinformationen über die Charaktere der Geschichte: '{story_settings[chosen_story]}'. Der Titel der Geschichte lautet:'{st.session_state.title}', "
             st.session_state.story = get_story(prompt)
 
             # Generate Image
