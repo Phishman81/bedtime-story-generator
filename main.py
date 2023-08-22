@@ -16,8 +16,8 @@ def create_outline(prompt, story_title):
       prompt=prompt,
       max_tokens=500
     )
-    outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
     return clean_generated_text(response.choices[0].text.strip())
+    outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
 
 # Required Imports
 import streamlit as st
