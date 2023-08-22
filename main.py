@@ -79,7 +79,7 @@ def main():
     outline = ""
     if st.button("Outline erstellen"):
         outline_prompt = f"Erstelle einen Outline für die Geschichte mit dem Titel '{{st.session_state.title}}' basierend auf dem folgenden Setting: {{story_settings[chosen_story]}}"
-    outline = create_outline(outline_prompt, st.session_state.title, chosen_story)
+        outline = create_outline(outline_prompt, st.session_state.title, chosen_story)
         st.session_state.outline = outline
         st.write(outline)
 
