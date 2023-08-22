@@ -34,6 +34,9 @@ def get_image(prompt):
         return None
 
 def main():
+    # Load GPT-4 API Key
+    openai.api_key = st.secrets["openai_api_key"]
+
     # Title
     st.title("Bedtime-Stories")
 
