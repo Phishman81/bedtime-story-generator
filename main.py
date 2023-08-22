@@ -7,8 +7,8 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": "Die Familie Maus sind Papa Maus, Mama Maus und die Kinder Max, Mina und der kleine Mo. Sie leben versteckt in einem kleinen gemütlichen Mauseloch unter einem alten Baumstumpf am Waldsee, umgeben von hohen Bäumen. Es gibt liebe Tiere wie Fritz, den schlauen Fuchs, Karl die dicke Kröte und Greta, die Grille - eine gute Freundin von Mo. Es gibt böse tiere wie Helga, der hungrige Habicht und Konrad den Kater.",
-    "Ferdinand, das rote Auto": "Ferdinand ist ein leuchtend rotes Rennauto, das in der kleinen Stadt Autoburg lebt. Seine Garage befindet sich am Fuße eines großen Berges, umgeben von kurvigen Straßen. Zu seinen Freunden gehören Paula, das freundliche Polizeiauto, Timo, der fleißige Traktor, und Lina, der fröhliche Lastwagen. Es gibt auch Herausforderer wie Viktor, das eitle Rennauto, und Maxi, das schelmische Motorrad, das ständig für Unruhe sorgt."
+    "Die Abenteuer der Familie Maus": "Die Familie Maus: Das sind Papa Maus, Mama Maus und die Kinder Max, Mina und der kleine Mo. Sie leben versteckt in einem kleinen gemütlichen Mauseloch unter einem alten Baumstumpf am Waldsee, umgeben von hohen Bäumen. Es gibt liebe Tiere wie Fritz, den schlauen Fuchs, Karl die dicke Kröte und Greta, die Grille - eine gute Freundin von Mo. Es gibt böse tiere wie Helga, der hungrige Habicht und Konrad den Kater.",
+    "Ferdinand, das rote Auto": "Ferdinand: Das ist ein leuchtend rotes Rennauto, das in der kleinen Stadt Autoburg lebt. Seine Garage befindet sich am Fuße eines großen Berges, umgeben von kurvigen Straßen. Zu seinen Freunden gehören Paula, das freundliche Polizeiauto, Timo, der fleißige Traktor, und Lina, der fröhliche Lastwagen. Es gibt auch Herausforderer wie Viktor, das eitle Rennauto, und Maxi, das schelmische Motorrad, das ständig für Unruhe sorgt."
 }
 
 # Function to generate story titles with GPT-4
@@ -58,7 +58,7 @@ def main():
 
         # Generate Story
         if st.button("Schreibe jetzt diese Geschichte"):
-            prompt = f"In der Sprache Deutsch, mit der Einstellung von '{story_settings[chosen_story]}', und mit dem Titel '{st.session_state.title}', generiere eine 1000 Wörter lange, fesselnde und altersgerechte Gutenachtgeschichte im Stil von Beatrix Potter. Stelle sicher, dass die Geschichte spannend, lustig ist und einen klaren Anfang, Mitte und Ende hat."
+            prompt = f"Du bist ein erfahrener Kinderbuchautor mit viel Wissen über Dramaturgie und liebevolle Dialoge. Du kennst das Prinzip der Heldenreise von Joseph Campbell. Verfasse bitte nach dem Framework der Heldenreise eine spannende Geschichte für Kinder im Alter von 3 bis 6 Jahren über '{story_settings[chosen_story]}'. Die Geschichte hat den Titel '{st.session_state.title}'. Bitte halte dich nur lose an die Vorgaben, du hast viel Spielraum und kreative Freiheit. Bitte nutze eine klare Struktur, erstelle Zwischenüberschriften und mache die Geschichte spannend, aber altersgerecht. Nutze sehr einfache Sprache und keine Fremdwörter."
             st.session_state.story = get_story(prompt)
 
             # Generate Image
