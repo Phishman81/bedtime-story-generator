@@ -51,6 +51,7 @@ def main():
     # Dropdown for Story Selection
     chosen_story = st.selectbox("Wähle eine Geschichte", list(story_settings.keys()))
 
+    
     # Get Story Titles
     if st.button("Geschichtstitel erhalten"):
         prompt = f"Erstelle bitte 5 kurze, aber sehr unterschiedliche Titel für interessante Kindergeschichten in denen es um folgendes geht:'{story_settings[chosen_story]}'. Bitte nenne in 2 deiner Vorschläge je einen Namen eines Charakters. In 3 Titeln soll kein Name eines Charakters vorkommen. Erfinde gerne kreative Szenarien und Orte. Erstelle sie als Liste, einen Titel je Zeile. Bitte schreibe nur die Titel, keine Erläuterungen und benutze keine Anführungszeichen."
@@ -68,16 +69,17 @@ def main():
         st.session_state.outline = outline
         st.write(outline)
 
-        # Generate Story
-        if 'outline' in st.session_state and 'title' in st.session_state and st.button("Schreibe jetzt diese Geschichte"):
-            prompt = f"Du bist ein erfahrener Kinderbuchautor mit viel Wissen über Dramaturgie und liebevolle Dialoge. Du kennst das Prinzip der Heldenreise von Joseph Campbell. Verfasse bitte nach dem Framework der Heldenreise eine spannende Geschichte für Kinder im Alter von 3 bis 6 Jahren über '{story_settings[chosen_story]}'. Die Geschichte hat den Titel '{st.session_state.title}'. Bitte halte dich nur lose an die Vorgaben, du hast viel Spielraum und kreative Freiheit. Bitte nutze eine klare Struktur, erstelle Zwischenüberschriften und mache die Geschichte spannend, aber altersgerecht. Nutze sehr einfache Sprache und keine Fremdwörter."
-            st.session_state.story = get_story(prompt)
+    # Generate Story
+    if 'outline' in st.session_state and 'title' in st.session_state and st.button("Schreibe jetzt diese Geschichte"):
+        prompt = f"Du bist ein erfahrener Kinderbuchautor mit viel Wissen über Dramaturgie und liebevolle Dialoge. Du kennst das Prinzip der Heldenreise von Joseph Campbell. Verfasse bitte nach dem Framework der Heldenreise eine spannende Geschichte für Kinder im Alter von 3 bis 6 Jahren über '{story_settings[chosen_story]}'. Die Geschichte hat den Titel '{st.session_state.title}'. Bitte halte dich nur lose an die Vorgaben, du hast viel Spielraum und kreative Freiheit. Bitte nutze eine klare Struktur, erstelle Zwischenüberschriften und mache die Geschichte spannend, aber altersgerecht. Nutze sehr einfache Sprache und keine Fremdwörter."
+        st.session_state.story = get_story(prompt)
 
-            # Generate Image
-            subject = "a cute little mouse" if chosen_story == "Die Abenteuer der Familie Maus" else "cute little red racing car"
-            image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}'."
-            st.session_state.image_url = get_image(image_prompt)
-
+        # Generate Image
+        subject = "a cute little mouse" if chosen_story == "Die Abenteuer der Familie Maus" else "cute little red racing car"
+        image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}'."
+        st.session_state.image_url = get_image(image_prompt)
+    
+    
     # Show Image and Story
     if 'image_url' in st.session_state and st.session_state.image_url is not None:
         st.image(st.session_state.image_url)
