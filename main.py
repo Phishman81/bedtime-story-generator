@@ -10,14 +10,11 @@ def clean_generated_text(text):
     return text
 
 
-def create_outline(prompt, story_title):
-    response = openai.Completion.create(
-      engine="text-davinci-003",
-      prompt=prompt,
-      max_tokens=500
-    )
-    return clean_generated_text(response.choices[0].text.strip())
+def create_outline(prompt, title):
+    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
+    outline_text = response.choices[0].text.strip()
     outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
+    return outline_text
 
 # Required Imports
 import streamlit as st
