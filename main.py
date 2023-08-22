@@ -1,4 +1,14 @@
 
+def clean_generated_text(text):
+    replacements = {
+        "{st.session_state.character1_name}": "Charakter1",
+        "{st.session_state.character2_name}": "Charakter2"
+    }
+    for placeholder, replacement in replacements.items():
+        text = text.replace(placeholder, replacement)
+    return text
+
+
 def create_outline(prompt, story_title):
     response = openai.Completion.create(
       engine="text-davinci-003",
