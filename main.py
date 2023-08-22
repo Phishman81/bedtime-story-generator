@@ -48,7 +48,7 @@ def main():
 
     # Get Story Titles
     if st.button("Geschichtstitel erhalten"):
-        prompt = f"Erstelle 10 kurze, ansprechende und lustige Titel für Gutenachtgeschichten für sehr kleine Kinder im Alter von 1 bis 4 Jahren. Hier sind die Charaktere und das Setting für diese Geschichten '{story_settings[chosen_story]}'. Es müssen nicht alle Charaktere in den Geschichten auftauchen. 5 Titel bitte ohne einen Namen eines Charakters. Wichtig ist, das die Titel magisch und phantasievoll sind. Erstelle sie als Liste, einen Titel je Zeile."
+        prompt = f"Erstelle bitte 5 kurze Titel für Geschichten in denen es um folgendes geht:'{story_settings[chosen_story]}'. Bitte nenne in 2 Titeln den Namen einer der genannten Charaktere. Erstelle sie als Liste, einen Titel je Zeile. Bitte schreibe nur die Titel, keine Erläuterungen und benutze keine Anführungszeichen."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
