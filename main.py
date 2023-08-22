@@ -10,7 +10,7 @@ def clean_generated_text(text):
     return text
 
 
-def create_outline(prompt, title):
+def create_outline(prompt, title, chosen_story):
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
     outline_text = response.choices[0].text.strip()
     outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
@@ -79,7 +79,7 @@ def main():
     outline = ""
     if st.button("Outline erstellen"):
         outline_prompt = f"Erstelle einen Outline für die Geschichte mit dem Titel '{{st.session_state.title}}' basierend auf dem folgenden Setting: {{story_settings[chosen_story]}}"
-        outline = create_outline(outline_prompt, st.session_state.title)
+    outline = create_outline(outline_prompt, st.session_state.title, chosen_story)
         st.session_state.outline = outline
         st.write(outline)
 
