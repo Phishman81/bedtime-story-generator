@@ -7,8 +7,8 @@ openai.api_key = st.secrets["openai_api_key"]
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": 'SETTING:Waldsee,idyllisch,umgeben von hohen Bäumen und bunten Blumen.Menschenaktivitäten nur aus Ferne.CHARAKTERE:FAMILIE MAUS:Papa:Ein Arbeiter,Mama:liebevoll,Max:mutig,Mina:neugierig,Mo:abenteuerlustig,Greta:fröhliche Grille,FREUNDE:Fritz:schlauer Fuchs,Bella:gütige Biene.FEINDE:Helga:hungriger Habicht,Konrad:knurriger Kater.',
-    "Ferdinand, das rote Auto": "In einer belebten Stadt lebt ein glänzendes rotes Rennauto namens Ferdinand. Ferdinand ist bekannt für seine Geschwindigkeit und Agilität und bringt jedem, der ihn Rennen sieht, Freude."
+    "Die Abenteuer der Familie Maus": "Die Familie Maus sind Papa Maus, Mama Maus und die Kinder Max, Mina und der kleine Mo. Sie leben versteckt in einem kleinen gemütlichen Mauseloch unter einem alten Baumstumpf am Waldsee, umgeben von hohen Bäumen. Es gibt liebe Tiere wie Fritz, den schlauen Fuchs, Karl die dicke Kröte und Greta, die Grille - eine gute Freundin von Mo. Es gibt böse tiere wie Helga, der hungrige Habicht und Konrad den Kater.",
+    "Ferdinand, das rote Auto": "Ferdinand ist ein leuchtend rotes Rennauto, das in der kleinen Stadt Autoburg lebt. Seine Garage befindet sich am Fuße eines großen Berges, umgeben von kurvigen Straßen. Zu seinen Freunden gehören Paula, das freundliche Polizeiauto, Timo, der fleißige Traktor, und Lina, der fröhliche Lastwagen. Es gibt auch Herausforderer wie Viktor, das eitle Rennauto, und Maxi, das schelmische Motorrad, das ständig für Unruhe sorgt."
 }
 
 # Function to generate story titles with GPT-4
