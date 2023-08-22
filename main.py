@@ -62,9 +62,10 @@ def main():
             st.session_state.story = get_story(prompt)
 
             # Generate Image
-            subject = "Maus" if chosen_story == "mouse" else "red racing car"
-            image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}' in the style of Beatrix Potter."
+            subject = "a cute little mouse" if chosen_story == "Die Abenteuer der Familie Maus" else "cute little red racing car"
+            image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}'."
             st.session_state.image_url = get_image(image_prompt)
+
 
     # Show Image and Story
     if 'image_url' in st.session_state and st.session_state.image_url is not None:
