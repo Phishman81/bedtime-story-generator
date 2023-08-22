@@ -1,8 +1,12 @@
 
-outline_button = st.button("Outline erstellen")
-if outline_button:
-    outline = create_outline(selected_setting, selected_title)
-    st.write(outline)
+def create_outline(prompt, story_title):
+    response = openai.Completion.create(
+      engine="text-davinci-003",
+      prompt=prompt,
+      max_tokens=150
+    )
+    return response.choices[0].text.strip()
+
 # Required Imports
 import streamlit as st
 import openai
@@ -61,7 +65,16 @@ def main():
     if 'titles' in st.session_state:
         st.session_state.title = st.selectbox("Wähle einen Titel", st.session_state.titles)
 
-        # Generate Story
+        
+    # Create Story Outline
+    outline = ""
+    if st.button("Outline erstellen"):
+        outline_prompt = f"Erstelle einen Outline für die Geschichte mit dem Titel '{{st.session_state.title}}' basierend auf dem folgenden Setting: {{story_settings[chosen_story]}}"
+        outline = create_outline(outline_prompt, st.session_state.title)
+        st.session_state.outline = outline
+        st.write(outline)
+
+# Generate Story
         if st.button("Schreibe jetzt diese Geschichte"):
             prompt = f"Du bist ein erfahrener Kinderbuchautor mit viel Wissen über Dramaturgie und liebevolle Dialoge. Du kennst das Prinzip der Heldenreise von Joseph Campbell. Verfasse bitte nach dem Framework der Heldenreise eine spannende Geschichte für Kinder im Alter von 3 bis 6 Jahren über '{story_settings[chosen_story]}'. Die Geschichte hat den Titel '{st.session_state.title}'. Bitte halte dich nur lose an die Vorgaben, du hast viel Spielraum und kreative Freiheit. Bitte nutze eine klare Struktur, erstelle Zwischenüberschriften und mache die Geschichte spannend, aber altersgerecht. Nutze sehr einfache Sprache und keine Fremdwörter."
             st.session_state.story = get_story(prompt)
