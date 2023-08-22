@@ -5,7 +5,7 @@ def create_outline(prompt, story_title):
       prompt=prompt,
       max_tokens=150
     )
-    return response.choices[0].text.strip()
+    return clean_generated_text(response.choices[0].text.strip())
 
 # Required Imports
 import streamlit as st
@@ -29,7 +29,7 @@ def get_story_titles(prompt):
 # Function to generate story with GPT-4
 def get_story(prompt):
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=3500)
-    return response.choices[0].text.strip()
+    return clean_generated_text(response.choices[0].text.strip())
 
 # Function to generate image with DALL-E
 def get_image(prompt):
