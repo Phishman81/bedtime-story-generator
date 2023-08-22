@@ -1,3 +1,8 @@
+
+outline_button = st.button("Outline erstellen")
+if outline_button:
+    outline = create_outline(selected_setting, selected_title)
+    st.write(outline)
 # Required Imports
 import streamlit as st
 import openai
