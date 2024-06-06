@@ -8,21 +8,42 @@ story_settings = {
 }
 
 def create_outline(prompt, title, chosen_story):
-    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=500)
-    outline_text = response.choices[0].text.strip()
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=500
+    )
+    outline_text = response['choices'][0]['message']['content'].strip()
     outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
     return outline_text
 
 # Function to generate story titles with GPT-4
 def get_story_titles(prompt):
-    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=500)
-    titles = response.choices[0].text.strip().split('\n')
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=500
+    )
+    titles = response['choices'][0]['message']['content'].strip().split('\n')
     return titles
 
 # Function to generate story with GPT-4
 def get_story(prompt):
-    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=3500)
-    return response.choices[0].text.strip()
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=3500
+    )
+    return response['choices'][0]['message']['content'].strip()
 
 # Function to generate image with DALL-E
 def get_image(prompt):
@@ -63,7 +84,7 @@ def main():
 
     # Create Story Outline
     if st.button("Outline erstellen"):
-        outline_prompt = f"Erstelle einen Outline für die Geschichte mit dem Titel '{{st.session_state.title}}' basierend auf dem folgenden Setting: {{story_settings[chosen_story]}}"
+        outline_prompt = f"Erstelle einen Outline für die Geschichte mit dem Titel '{st.session_state.title}' basierend auf dem folgenden Setting: {story_settings[chosen_story]}"
         outline = create_outline(outline_prompt, st.session_state.title, chosen_story)
         st.session_state.outline = outline
         st.write(outline)
