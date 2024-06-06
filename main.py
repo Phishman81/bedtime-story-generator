@@ -47,7 +47,7 @@ def get_story(prompt):
 
 # Function to generate image with DALL-E
 def get_image(prompt):
-    response = openai.Image.create(prompt=prompt, model="dall-e", size="512x512")
+    response = openai.Image.create(prompt=prompt, model="image-alpha-001", size="512x512")
     try:
         return response['data'][0]['url']
     except IndexError:
@@ -74,7 +74,7 @@ def main():
 
     # Get Story Titles
     if st.button("Geschichtstitel erhalten"):
-        prompt = f"Erstelle bitte 5 kurze, aber sehr unterschiedliche Titel für interessante Kindergeschichten in denen es um folgendes geht:'{story_settings[chosen_story]}'. Bitte nenne in 2 deiner Vorschläge je einen Namen eines Charakters. In 3 Titeln soll kein Name eines Charakters vorkommen. Erfinde gerne kreative Szenarien und Orte. Erstelle sie als Liste, einen Titel je Zeile. Bitte schreibe nur die Titel, keine Erläuterungen und benutze keine Anführungszeichen."
+        prompt = f"Erstelle bitte 5 kurze, aber sehr unterschiedliche Titel für interessante Kindergeschichten in denen es um folgendes geht: '{story_settings[chosen_story]}'. Bitte nenne in 2 deiner Vorschläge je einen Namen eines Charakters. In 3 Titeln soll kein Name eines Charakters vorkommen. Erfinde gerne kreative Szenarien und Orte. Erstelle sie als Liste, einen Titel je Zeile. Bitte schreibe nur die Titel, keine Erläuterungen und benutze keine Anführungszeichen."
         titles = get_story_titles(prompt)
         st.session_state.titles = titles
 
