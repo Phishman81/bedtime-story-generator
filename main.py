@@ -9,7 +9,7 @@ story_settings = {
 
 def create_outline(prompt, title, chosen_story):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -20,10 +20,10 @@ def create_outline(prompt, title, chosen_story):
     outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
     return outline_text
 
-# Function to generate story titles with GPT-4
+# Function to generate story titles with GPT-4 Turbo
 def get_story_titles(prompt):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -33,10 +33,10 @@ def get_story_titles(prompt):
     titles = response['choices'][0]['message']['content'].strip().split('\n')
     return titles
 
-# Function to generate story with GPT-4
+# Function to generate story with GPT-4 Turbo
 def get_story(prompt):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -55,7 +55,7 @@ def get_image(prompt):
         return None
 
 def main():
-    # Load GPT-4 API Key
+    # Load GPT-4 Turbo API Key
     openai.api_key = st.secrets["openai_api_key"]
 
     # Title
