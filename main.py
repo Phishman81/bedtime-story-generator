@@ -3,30 +3,30 @@ import openai
 
 # Story Settings
 story_settings = {
-    "Die Abenteuer der Familie Maus": "Die Familie Maus: Das sind Papa Maus, Mama Maus und die Kinder Max, Mina und der kleine Mo. Sie leben versteckt in einem kleinen gemütlichen Mauseloch unter einem alten Baumstumpf am Waldsee, umgeben von hohen Bäumen. Es gibt liebe Tiere wie Fritz, den schlauen Fuchs, Karl die dicke Kröte und Greta, die Grille - eine gute Freundin von Mo. Es gibt böse tiere wie Helga, der hungrige Habicht und Konrad den Kater.",
+    "Die Abenteuer der Familie Maus": "Die Familie Maus: Das sind Papa Maus, Mama Maus und die Kinder Max, Mina und der kleine Mo. Sie leben versteckt in einem kleinen gemütlichen Mauseloch unter einem alten Baumstumpf am Waldsee, umgeben von hohen Bäumen. Es gibt liebe Tiere wie Fritz, den schlauen Fuchs, Karl die dicke Kröte und Greta, die Grille - eine gute Freundin von Mo. Es gibt böse Tiere wie Helga, der hungrige Habicht und Konrad den Kater.",
     "Ferdinand, das rote Auto": "Ferdinand: Das ist ein leuchtend rotes Rennauto, das in der kleinen Stadt Autoburg lebt. Seine Garage befindet sich am Fuße eines großen Berges, umgeben von kurvigen Straßen. Zu seinen Freunden gehören Paula, das freundliche Polizeiauto, Timo, der fleißige Traktor, und Lina, der fröhliche Lastwagen. Es gibt auch Herausforderer wie Viktor, das eitle Rennauto, und Maxi, das schelmische Motorrad, das ständig für Unruhe sorgt."
 }
 
 def create_outline(prompt, title, chosen_story):
-    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
+    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=500)
     outline_text = response.choices[0].text.strip()
     outline_text = outline_text.replace('{story_settings[chosen_story]}', story_settings[chosen_story])
     return outline_text
 
 # Function to generate story titles with GPT-4
 def get_story_titles(prompt):
-    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
+    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=500)
     titles = response.choices[0].text.strip().split('\n')
     return titles
 
 # Function to generate story with GPT-4
 def get_story(prompt):
-    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=3500)
+    response = openai.Completion.create(engine="gpt-4", prompt=prompt, max_tokens=3500)
     return response.choices[0].text.strip()
 
 # Function to generate image with DALL-E
 def get_image(prompt):
-    response = openai.Image.create(prompt=prompt, model="image-alpha-001", size="512x512")
+    response = openai.Image.create(prompt=prompt, model="dall-e", size="512x512")
     try:
         return response['data'][0]['url']
     except IndexError:
@@ -51,7 +51,6 @@ def main():
     # Dropdown for Story Selection
     chosen_story = st.selectbox("Wähle eine Geschichte", list(story_settings.keys()))
 
-    
     # Get Story Titles
     if st.button("Geschichtstitel erhalten"):
         prompt = f"Erstelle bitte 5 kurze, aber sehr unterschiedliche Titel für interessante Kindergeschichten in denen es um folgendes geht:'{story_settings[chosen_story]}'. Bitte nenne in 2 deiner Vorschläge je einen Namen eines Charakters. In 3 Titeln soll kein Name eines Charakters vorkommen. Erfinde gerne kreative Szenarien und Orte. Erstelle sie als Liste, einen Titel je Zeile. Bitte schreibe nur die Titel, keine Erläuterungen und benutze keine Anführungszeichen."
@@ -75,11 +74,10 @@ def main():
         st.session_state.story = get_story(prompt)
 
         # Generate Image
-        subject = "a cute little mouse" if chosen_story == "Die Abenteuer der Familie Maus" else "cute little red racing car"
+        subject = "a cute little mouse" if chosen_story == "Die Abenteuer der Familie Maus" else "a cute little red racing car"
         image_prompt = f"Captivating illustration showing a playful {subject} dealing with '{st.session_state.title}'."
         st.session_state.image_url = get_image(image_prompt)
-    
-    
+
     # Show Image and Story
     if 'image_url' in st.session_state and st.session_state.image_url is not None:
         st.image(st.session_state.image_url)
